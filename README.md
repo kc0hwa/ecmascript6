@@ -3,3 +3,7 @@ Práticas embasadas no livro <strong>ECMAScript 6 - Entre de Cabeça no Futuro d
 Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguagem, clica no fork e no star.
 
 - Métodos Auxiliares para Array
+- Iterações com Iteradores e Iteráveis
+- Iteração com o laço <i>for...of<i>
+- Diferença entre <i>for...of<i> e <i>for...in</i>
+- Break & Continue
