@@ -6,10 +6,9 @@ for(var i = 0; i < frutas.length; frutas++) {
 
 var nomes = ['renato', 'marli', 'manoel', 'ronaldo']
 for(var i = 0; i < nomes.length; i++) {
-  console.log(nomes[i]);
+  console.log(nomes[i])
 }
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // FOREACH
 var nomes = ['renato', 'marli', 'manoel', 'ronaldo']
@@ -31,7 +30,6 @@ canais.forEach(function(canal) {
   console.log(canal)
 })
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // MAP
 var numeros = [1, 2, 3]
@@ -52,7 +50,6 @@ var dobro = numeros.map(function(numero) {
 console.log(numeros)
 console.log(dobro)
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // FILTER
 // ES5
@@ -83,7 +80,6 @@ var alunosDeMaior = alunos.filter(function(aluno) {
 
 console.log(alunosDeMaior)
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // FIND
 // ES5
@@ -115,7 +111,6 @@ var aluno = alunos.find(function(aluno) {
 
 console.log(aluno)
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // EVERY
 var alunos = [
@@ -146,7 +141,6 @@ var todosAlunosDeMaior = alunos.every(function(aluno) {
 
 console.log(todosAlunosDeMaior)
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // SOME
 // ES5
@@ -167,7 +161,6 @@ var temMalaAcimaDoPeso = pesoDasMalas.some(function(pesoDaMala) {
 
 console.log(temMalaAcimaDoPeso)
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // REDUCE
 // Ex.1
@@ -189,7 +182,6 @@ soma = numeros.reduce(function(soma, numero) {
 
 console.log(soma)
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // Ex.2
 var alunos = [
@@ -322,7 +314,6 @@ let products = [
   { nome: 'Búfalo Lavanda 500ml', tipo: 'Querosene', peso: 500},
   { nome: 'Kin Limp Lavanda 500ml', tipo: 'Removedor', peso: 500}
 ]
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 let newProducts = products.map(function(peso) {
   return peso.peso
@@ -358,7 +349,6 @@ let tipo = products.reduce(function(arrayTipo, nome) {
 }, [])
 
 console.log(tipo)
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // ITERAÇÕES COM ITERADORES E ITERÁVEIS
 
@@ -374,12 +364,13 @@ console.log(iteradorBruxos.next())
 var iterador = bruxos[Symbol.iterator]()
 var done = false
 var proximo = iterador.next()
+
+// Exemplo hipotético
 // do {
 // var bruxo = proximo.value
 // chapeuSeletor.fazerSelecaoDaCasa(bruxo)
 // proximo = iterador.next()
 // } while (!proximo.done)
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // FOR OF & FOR IN
 
@@ -402,7 +393,6 @@ for(var propriedade in perfilDoFacebook) {
   console.log(info)
 }
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 // BREAK & CONTINUE
 
@@ -420,3 +410,212 @@ for(var numero of numeros) {
   }
   console.log(numero)
 }
+
+// MAP WEAKMAP
+
+var map = new Map()
+function funcao(){}
+var objeto = {}
+
+map.set("string", "sou uma string")
+map.set(objeto, "sou um objeto")
+map.set(funcao, "sou uma função")
+
+console.log(map.get("string"))
+console.log(map.get(objeto))
+console.log(map.get(funcao))
+
+console.log("\ntamanho: " + map.size)
+console.log(map.has("string"))
+console.log(map.has("abc"))
+
+map.delete("string")
+console.log(map.has("string"))
+
+map.clear()
+console.log("tamanho: " + map.size)
+
+var mapa = new Map()
+mapa.set('um', 1)
+mapa.set('dois', 2)
+mapa.set('três', 3)
+
+for(var chave of mapa.keys()) {
+  console.log(chave)
+}
+
+for(var valor of mapa.values()) {
+  console.log(valor)
+}
+
+for(var entrada of mapa.entries()) {
+  console.log(entrada)
+}
+
+var weakMap = new WeakMap()
+var elemento1 = window
+var elemento2 = document.querySelector('body')
+
+weakMap.set(elemento1, 'sou o elemento1')
+weakMap.set(elemento2, 'sou o elemento2')
+
+console.log(weakMap.get(elemento1))
+console.log(weakMap.get(elemento2))
+
+elemento2.parentNode.removeChild(elemento2)
+elemento2 = null
+
+console.log(weakMap.get(elemento2))
+
+var weakMap = new WeakMap()
+function funcao(){}
+var objeto = {}
+
+// weakMap.set("string", "isso é uma string") Uncaught TypeError: Invalid value used as weak map key at WeakMap.set
+weakMap.set(funcao, "isso é uma função")
+weakMap.set(objeto, "isso é um objeto")
+
+function Pessoa(nome) {
+  this._nome = nome
+}
+
+Pessoa.prototype.getNome = function() {
+  return this._nome
+}
+
+var roberto = new Pessoa('Roberto')
+console.log(roberto.getNome())
+console.log(roberto._nome)
+
+var Pessoa = (function() {
+  
+  var dadosPrivados = new WeakMap()
+
+  function Pessoa(nome) {
+    dadosPrivados.set(this, { nome: nome })
+  }
+
+  Pessoa.prototype.getNome = function() {
+    return dadosPrivados.get(this).nome
+  }
+
+  return Pessoa
+}())
+
+var rafael = new Pessoa('Rafael')
+console.log(rafael.getNome())
+console.log(rafael.nome)
+
+// ADMNISTRANDO UMA BIBLIOTECA
+
+var livros = []
+var estates = new Map()
+for(var livro of livros) {
+  estantes.set(livro.getTitulo(), getEstante())
+}
+
+function getLocalizacaoDoLivro(tituloDoLivro) {
+  var estante = estantes.get(tituloDoLivro)
+  if(estante === undefined) {
+    return 'Livro não encontrado no acervo!'
+  }
+
+  return estantes.get(tituloDoLivro)
+}
+
+// LISTAS SEM REPETIÇÕES COM SETS E WEAKSETS
+
+function Set() {
+  var array = []
+  this.add = function(valor) {
+    if(array.indexOf(valor) === -1) {
+      array.push(valor)
+    }
+  }
+}
+// Uncaught TypeError: set is not iterable
+
+function Set() {
+  var array = []
+  this.add = function(valor) {
+    if(array.indexOf(valor) === -1) {
+      array.push(valor)
+    }
+  },
+  
+  this.mostrarValores = function() {
+    console.log(array)
+  }
+}
+// Uncaught TypeError: set is not iterable
+
+var set = new Set()
+set.add(2)
+set.add(1)
+set.add(2)
+
+// set.mostrarValores()
+
+// SET
+
+var set = new Set()
+set.add(2)
+set.add(1)
+set.add(2)
+
+for (const valor of set) {
+console.log(valor)
+}
+
+var set = new Set([2, 1, 2])
+for(const valor of set) {
+  console.log(valor)
+}
+
+var musicas = new Set()
+musicas.add('musica1')
+
+for(var musica of musicas) {
+  console.log(musica)
+}
+
+var musicas = new Set(['musica1', 'musica2'])
+musicas.delete('musica1')
+
+for(var musica of musicas) {
+  console.log(musica)
+}
+
+var musicas = new Set(['musica1', 'musica2', 'musica3'])
+
+musicas.clear()
+
+for(var musica of musicas) {
+  console.log(musica)
+}
+
+var musicas = new Set(['musica1'])
+if(musicas.has('musica1')) {
+  console.log('Já está na lista!')
+}
+
+var musicas = new Set(['musica1', 'musica2', 'musica3'])
+var qtdMusicas = musicas.size
+// console.log("Há " + qtdMusicas + " músicas na lista.")
+
+// WEAKSET
+
+var musica1 = {
+  titulo: 'O amor não tem rollback',
+  autor: 'SQL'
+}
+
+var musicas = new WeakSet([musica1])
+console.log(musicas)
+
+var musicas = new Set([musica1])
+console.log(musicas)
+
+musica1 = null
+
+console.log(musicas)
