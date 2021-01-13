@@ -15,3 +15,4 @@ Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguag
 - Lista sem repetições com Sets & WeakSets
 - Set
 - WeakSet
+- Const e Let
