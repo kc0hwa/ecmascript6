@@ -21,3 +21,10 @@ Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguag
 - Declaração de Propriedades
 - Índices de Propriedades Computadas
 - Objetos Literais x JSON
+- Parâmetros Predefinidos em Funções
+- Atribuindo Valores Padrões
+- Valores Undefined
+- Referenciando outros valores padrões
+- Referenciando variáveis internas
+- Utilizando funções como valores padrões
+- Tornando valores obrigatórios

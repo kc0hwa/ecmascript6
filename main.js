@@ -1006,10 +1006,122 @@ const dados = obterDadosDaTela()
 const dadosJson = JSON.stringify(dados)
 
 $.ajax({
-  url         : url,
-  dataType    : 'json',
-  contentType : 'application/json; charset=UTF-8',
-  data        : dadosJson,
-  type        : 'POST',
-  complete    : callback
+  url           : url,
+  dataType      : 'json',
+  contentType   : 'application/json; charset=UTF-8',
+  data          : dadosJson,
+  type          : 'POST',
+  complete      : callback
 })
+
+
+// PARÂMETROS PREDEFINIDOS EM FUNÇÕES
+
+function minhaMaeMandouEuEscolherEsseDaqui(qualEuEscolhi) {
+  console.log(qualEuEscolhi)
+}
+
+minhaMaeMandouEuEscolherEsseDaqui('terceiro')
+minhaMaeMandouEuEscolherEsseDaqui()
+
+function imprimeNomeCompleto(nome, sobrenome, nomeDoMeio) {
+  console.log(`${nome} ${nomeDoMeio} ${sobrenome}`)
+}
+
+imprimeNomeCompleto('Jorge', 'Reis')
+imprimeNomeCompleto('Isabela', 'Joana Luiza', 'Jesus')
+
+function imprimeNomeCompleto(nome, nomeDoMeio, sobrenome) {
+  if(nomeDoMeio === undefined) {
+    console.log(`${nome} ${sobrenome}`)
+  } else {
+    console.log(`${nome} ${nomeDoMeio} ${sobrenome}`)
+  }
+}
+
+imprimeNomeCompleto('Romulo', 'Scampini')
+imprimeNomeCompleto('Leticia', 'Aparecida', 'de Souza')
+
+
+// ATRIBUINDO VALORES PADRÕES
+
+function imprimeNomeCompleto(nome, sobrenome, nomeDoMeio = '') {
+  console.log(`${nome} ${nomeDoMeio} ${sobrenome}`)
+}
+
+imprimeNomeCompleto('João', 'da Silva', 'Aparecido')
+imprimeNomeCompleto('João', 'da Silva')
+
+
+// VALORES UNDEFINED
+
+function multiplicaPor(valor, multiplicador = 2) {
+  return valor * multiplicador
+}
+
+const valor = multiplicaPor(2, undefined)
+console.log(valor)
+
+function print(valor = '') {
+  console.log(valor)
+}
+
+print()
+print(null)
+
+
+// // REFERENCIANDO OUTROS VALORES PADRÕES
+
+function calculaPotencia(x = 2, y = x) {
+  console.log(Math.pow(x, y))
+}
+
+calculaPotencia()
+calculaPotencia(2)
+calculaPotencia(2,2)
+
+/*
+Na primeira ocorrência, quando invocamos a função sem
+nenhum argumento, ele considerou o valor padrão que
+estabelecemos para a variável x e atribuiu o valor de x na variável
+y , o que resultou em dois ao quadrado. Na segunda ocorrência,
+especificamos o primeiro argumento, mas não o segundo.
+Novamente foi atribuído o valor das variáveis x a y , resultando
+mais uma vez em dois ao quadrado. Na terceira ocorrência, como
+passamos ambos parâmetros, o resultado foi o que já era esperado.
+*/
+
+
+// REFERENCIANDO VARIÁVEIS INTERNAS
+
+const v = 'valor1'
+function funcao(x = v) {
+  const v = 'valor2'
+  console.log(x)
+}
+
+funcao()
+
+
+// UTILIZANDO FUNÇÕES COMO VALORES PADRÕES
+
+function facaAlgoComMeuNome(nome, callback = z => {
+  console.log(z)
+}) {
+  callback(nome)
+}
+
+facaAlgoComMeuNome('Muriel')
+
+
+// TORNANDO VALORES OBRIGATÓRIOS
+
+function parametroObrigatorio(parametro) {
+  throw new Error(`O parâmetro "${parametro}" é obrigatório!`)
+}
+
+function inserirNaTela(objeto = parametroObrigatorio('objeto')) {
+  // lógica de implementação do método
+  }
+
+inserirNaTela()
