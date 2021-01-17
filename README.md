@@ -12,7 +12,7 @@ Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguag
 - Break & Continue
 - Map & WeakMap
 - Admnistrando uma biblioteca
-- Lista sem repetições com Sets & WeakSets
+- Lista sem repetições com <i>Sets</i> & <i>WeakSets</i>
 - Set
 - WeakSet
 - Const e Let
@@ -20,11 +20,13 @@ Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguag
 - Melhorias em Objetos Literais
 - Declaração de Propriedades
 - Índices de Propriedades Computadas
-- Objetos Literais x JSON
+- Objetos <i>Literais</i> x <i>JSON</i>
 - Parâmetros Predefinidos em Funções
-- Atribuindo Valores Padrões
-- Valores Undefined
+- Atribuindo valores padrões
+- Valores <i>Undefined</i>
 - Referenciando outros valores padrões
 - Referenciando variáveis internas
 - Utilizando funções como valores padrões
 - Tornando valores obrigatórios
+- Parâmetros infinitos com operador <i>Rest</i>
+- Entenda o que <i>arguments</i> faz

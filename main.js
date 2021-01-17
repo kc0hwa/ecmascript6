@@ -554,17 +554,17 @@ set.add(2)
 set.add(1)
 set.add(2)
 
-// set.mostrarValores()
+set.mostrarValores()
 
 // SET
 
-var set = new Set()
-set.add(2)
-set.add(1)
-set.add(2)
+var set = new Set();
+set.add(2);
+set.add(1);
+set.add(2);
 
 for (const valor of set) {
-console.log(valor)
+console.log(valor); // 2, 1
 }
 
 var set = new Set([2, 1, 2])
@@ -601,7 +601,7 @@ if(musicas.has('musica1')) {
 
 var musicas = new Set(['musica1', 'musica2', 'musica3'])
 var qtdMusicas = musicas.size
-// console.log("Há " + qtdMusicas + " músicas na lista.")
+console.log("Há " + qtdMusicas + " músicas na lista.")
 
 // WEAKSET
 
@@ -696,7 +696,7 @@ function imprimirNome(nome) {
   // console.log(nome)
 }
 
-let valor = 0
+var valor = 0
 if (true) {
   // Novo escopo, o TDZ do valor começa
 
@@ -729,17 +729,17 @@ const div =
 </div>
 `
 
-var div = '<div>'
-div += '<p><b>Nome:</b> ' + nome + '</p>'
-div += '<p><b>Idade:</b> ' + idade + '</p>'
-div += '<p><b>Endereço:</b> ' + endereco + '</p>'
-div += '</div>'
+var div1 = '<div>'
+div1 += '<p><b>Nome:</b> ' + nome + '</p>'
+div1 += '<p><b>Idade:</b> ' + idade + '</p>'
+div1 += '<p><b>Endereço:</b> ' + endereco + '</p>'
+div1 += '</div>'
 
 const horas = new Date().getHours()
-const mensagem = `Bom dia, são ${horas} horas`
-console.log(mensagem2)
+const mensagem1 = `Bom dia, são ${horas} horas`
+console.log(mensagem1)
 
-const mensagem = defineMensagem`Bom dia, são ${horas} horas`
+const mensagem2 = defineMensagem`Bom dia, são ${horas} horas`
 
 function defineMensagem(strings, ...values) {
 console.log(strings)
@@ -824,7 +824,7 @@ var objeto = {
 
 objeto.meuContexto()
 
-const equipe = {
+const equipeEx1 = {
   nome: 'Guerreiros Z',
   membros: ['Goku', 'Kuririn', 'Vegeta'],
   membrosDaEquipe: function () {
@@ -834,7 +834,7 @@ const equipe = {
   }
 }
 
-const equipe = {
+const equipeEx2 = {
   nome: 'Guerreiros Z',
   membros: ['Goku', 'Kuririn', 'Vegeta'],
   membrosDaEquipe: function() {
@@ -845,9 +845,9 @@ const equipe = {
   }
 }
 
-equipe.membrosDaEquipe()
+equipeEx2.membrosDaEquipe()
 
-const equipe = {
+const equipeEx3 = {
   nome: 'Guerreiros Z',
   membros: ['Goku', 'Kuririn', 'Vegeta'],
   membrosDaEquipe: function() {
@@ -857,7 +857,7 @@ const equipe = {
   }
 }
 
-equipe.membrosDaEquipe()
+equipeEx3.membrosDaEquipe()
 
 function mostrarPropriedadeDoContexto(nomePropriedade) {
   console.log(this[nomePropriedade])
@@ -969,7 +969,7 @@ const meuObjeto = {
 meuObjeto[nomeMetodo]()
 
 const nomeFuncao = 'mostrar'
-const propriedade = 'Nome'
+const propriedade0 = 'Nome'
 
 const meuOutroObjeto = {
   Nome: 'Objeto',
@@ -1059,7 +1059,7 @@ function multiplicaPor(valor, multiplicador = 2) {
   return valor * multiplicador
 }
 
-const valor = multiplicaPor(2, undefined)
+const valor0 = multiplicaPor(2, undefined)
 console.log(valor)
 
 function print(valor = '') {
@@ -1125,3 +1125,55 @@ function inserirNaTela(objeto = parametroObrigatorio('objeto')) {
   }
 
 inserirNaTela()
+
+
+// PARÂMETROS INFINITOS COM OPERADOR REST
+
+function montaQuerySelect() {
+  const tabela = arguments[0]
+  const qtdArgs = arguments.length
+  let cols = ''
+  if(qtdArgs > 1) {
+    for(let index = 1; index < qtdArgs; index++) {
+      cols += `${arguments[index]}, `
+    }
+    cols = cols.substring(0, cols.length - 2)
+  } else {
+    cols = '*'
+  }
+
+  return `SELECT ${cols} FROM ${tabela}`
+}
+
+const query1 = montaQuerySelect('tabela')
+const query2 = montaQuerySelect('tabela', 'col1')
+const query3 = montaQuerySelect('tabela', 'col1', 'col2')
+
+console.log(query1)
+console.log(query2)
+console.log(query3)
+
+
+// ENTENDA O QUE ARGUMENTS FAZ
+
+function logarTodosArgumentos() {
+  for(let i = 0; i < arguments.length; i++) {
+    console.log(arguments[i])
+  }
+}
+
+logarTodosArgumentos(1,2,3)
+
+function somar() {
+  let soma = 0
+  const qtd = arguments.length
+  for(let i = 0; i < qtd; i++) {
+    soma += arguments[i]
+  }
+
+  return soma
+}
+
+console.log(somar(1,2))
+console.log(somar(1,2,3))
+console.log(somar(1,2,3,4))
