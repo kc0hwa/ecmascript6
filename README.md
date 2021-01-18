@@ -30,3 +30,6 @@ Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguag
 - Tornando valores obrigatórios
 - Parâmetros infinitos com operador <i>Rest</i>
 - Entenda o que <i>arguments</i> faz
+- Arguments x Operado Rest
+- Particularidades do Operador Rest
+- Podemos utilizar em conjunto com parâmetros "fixos"
