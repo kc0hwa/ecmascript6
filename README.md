@@ -5,31 +5,39 @@ Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguag
 
 #### Tópicos
 
-- Métodos Auxiliares para Array
-- Iterações com Iteradores e Iteráveis
+- Métodos auxiliares para array
+- Iterações com iteradores e iteráveis
 - Iteração com o laço <i>for...of</i>
 - Diferença entre <i>for...of</i> e <i>for...in</i>
-- Break & Continue
-- Map & WeakMap
+- Break & continue
+- Map & weakmap
 - Admnistrando uma biblioteca
-- Lista sem repetições com <i>Sets</i> & <i>WeakSets</i>
+- Lista sem repetições com <i>sets</i> & <i>weakSets</i>
 - Set
 - WeakSet
-- Const e Let
-- Arrow Functions
-- Melhorias em Objetos Literais
-- Declaração de Propriedades
-- Índices de Propriedades Computadas
-- Objetos <i>Literais</i> x <i>JSON</i>
-- Parâmetros Predefinidos em Funções
+- Const e let
+- Arrow functions
+- Melhorias em objetos literais
+- Declaração de propriedades
+- Índices de propriedades computadas
+- Objetos <i>literais</i> x <i>JSON</i>
+- Parâmetros opredefinidos em funções
 - Atribuindo valores padrões
-- Valores <i>Undefined</i>
+- Valores <i>undefined</i>
 - Referenciando outros valores padrões
 - Referenciando variáveis internas
 - Utilizando funções como valores padrões
 - Tornando valores obrigatórios
-- Parâmetros infinitos com operador <i>Rest</i>
+- Parâmetros infinitos com operador <i>rest</i>
 - Entenda o que <i>arguments</i> faz
-- Arguments x Operado Rest
-- Particularidades do Operador Rest
+- Arguments x operado rest
+- Particularidades do operador rest
 - Podemos utilizar em conjunto com parâmetros "fixos"
+- Expansão com operador <i>spread</i>
+- Fazendo compras com <i>spread</i>
+- Operador <i>spread</i> em chamadas de funções
+- Operador <i>rest</i> x operador <i>spread</i>
+- Desestruturamento de arrays e objetos
+- Rotulando propriedades
+- Desestruturamento de vários objetos
+- Desestruturando arrays - parte 2

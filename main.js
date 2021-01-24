@@ -2434,3 +2434,219 @@ const query3 = montaQuerySelect('tabela', 'col1', 'col2');
 console.log(query1)
 console.log(query2)
 console.log(query3)
+
+
+// EXPANSÃO COM O OPERADOR SPREAD
+
+// ES5
+var argumentos = [1,2,3]
+console.log.apply(console, argumentos)
+
+// ES6
+var argumentos = [1,2,3]
+console.log(...argumentos)
+
+
+// FAZENDO COMPRAS COM O SPREAD
+
+const listaMae = ['leite', 'ovos', 'papel']
+const listaNamorada = ['arroz', 'feijão', 'suco']
+const listaEscritorio = ['adesivos', 'canetas', 'fita adesiva']
+
+var listaCompras = [...listaMae, ...listaNamorada, ...listaEscritorio]
+
+console.log(listaCompras)
+
+
+// ADICIONANDO ITENS A UM ARRAY
+
+const produtoSelecionado = {
+  descricao: 'Blusa de Lã',
+  preco: 'R$ 59,99'
+}
+
+const carrinho = [
+  { descricao: 'Bota de Cano Médio', preco: 'R$ 199,90' },
+  { descricao: 'Saia Colorida', preco: 'R$ 29,90' },
+  { descricao: 'Vestido Longo', preco: 'R$ 399,90' }
+]
+
+const carrinhoAtualizado = [...carrinho, produtoSelecionado]
+
+for(let produto of carrinhoAtualizado) {
+  console.log(produto.descricao)
+}
+
+
+// OPERADOR SPREAD EM CHAMADAS DE FUNÇÕES
+
+function soma(a,b) {
+  console.log(a + b)
+}
+
+soma(1,2)
+
+function soma(a,b) {
+  console.log(a + b)
+}
+
+var numeros = [1,2]
+soma(...numeros)
+
+function contaQuantidadesVogaisNaoAcentuadas(palavra) {
+  let qtdVogais = 0
+  const palavraLowerCase = palavra.toLowerCase()
+  const letras = [...palavraLowerCase]
+  for(let letra of letras) {
+    if("aeiou".indexOf(letra)) {
+      qtdVogais++
+    }
+  }
+
+  return qtdVogais
+}
+
+console.log(contaQuantidadesVogaisNaoAcentuadas('ecmascript'))
+console.log(contaQuantidadesVogaisNaoAcentuadas('javascript'))
+console.log(contaQuantidadesVogaisNaoAcentuadas('SWIFT'))
+console.log(contaQuantidadesVogaisNaoAcentuadas('jAvA'))
+
+
+//  OPERADOR REST x OPERADOR SPREAD
+
+function contaQuantidadeVogaisNaoAcentuadas(...palavras) {
+  let qtdVogais = 0
+  for(let palavra of palavras) {
+    let palavraLowerCase = palavra.toLowerCase()
+    const letras = [...palavraLowerCase]
+    for(let letra of letras) {
+      if('aeiou'.indexOf(letra)) {
+        qtdVogais++
+      }
+    }
+  }
+
+  return qtdVogais
+}
+
+console.log(contaQuantidadeVogaisNaoAcentuadas('es6'))
+console.log(contaQuantidadeVogaisNaoAcentuadas('java', 'javascript', 'delphi'))
+console.log(contaQuantidadeVogaisNaoAcentuadas('NãO ConSideRa AcentUADoS'))
+
+
+// DESESTRUTURAMENTO DE ARRAYS E OBJETOS
+
+const Usuario = {
+  nome: 'Elliot',
+  sobrenome: 'Alderson',
+  senha: 'mrrobot',
+  confirmacaoSenha: 'mrrobot',
+  email: 'elliot.alderson@gmail.com',
+  profissao: 'Engenheiro de Cibersegurança',
+  github: 'https://github.com/ElliotAlderson'
+}
+
+const {email} = Usuario
+console.log(email)
+
+const {senha, confirmacaoSenha} = Usuario
+console.log(senha)
+console.log(confirmacaoSenha)
+
+const {numeroDoCartao} = Usuario
+console.log(numeroDoCartao)
+
+
+// ROTULANDO PROPRIEDADES
+
+const Pessoa = {
+  sobrenome: 'Albert'
+}
+
+const {sobrenome:apelido} = Pessoa
+console.log(sobrenome)
+console.log(apelido)
+
+
+// DESESTRUTURAMENTO DE VÁRIOS OBJETOS
+
+const suco = {
+  sabor: 'uva',
+  quantidade: '500ml'
+}
+
+const doce = {
+  tipo: 'açúcar'
+}
+
+function descreveSuco({sabor, quantidade}, {tipo}) {
+  return `Este suco é de sabor ${sabor} e possui ${quantidade} adocicado com ${tipo}.`
+}
+
+console.log(descreveSuco(suco, doce))
+
+
+// DESESTRUTURAMENTO EM RETORNO DE CHAMADAS DE MÉTODOS
+
+// API hipotética
+function recuperarDadosDaAPI() {
+  // Realiza GET para o http://temperatura.com/api/temperatur/sp
+  // Retorna JSON que veio na response
+  return response.json
+}
+
+const {temperatura, maxima, minima} = recuperarDadosDaAPI()
+console.log(temperatura)
+console.log(maxima)
+console.log(minima)
+
+
+// DESESTRUTURAMENTO DE ARRAYS
+
+const cores = ['azul', 'cinza', 'branco', 'preto']
+console.log(cores[0])
+console.log(cores[3])
+
+const [cor1,,,cor2,cor3] = ['azul', 'cinza', 'branco', 'preto']
+console.log(cor1)
+console.log(cor2)
+console.log(cor3)
+
+const contatos = [
+  {
+    nome: 'Alex Júnior',
+    numero: '1234-5678'
+  },
+  {
+    nome: 'Carolina Moya',
+    numero: '1234-6789'
+  },
+  {
+    nome: 'Fernando Jorge',
+    numero: '1234-5567'
+  }
+]
+
+const [,Carol] = contatos
+
+function mostraNumero({numero}) {
+  console.log(numero)
+}
+
+mostraNumero(Carol)
+
+function mostraNumeroDaCarol([,{numero}]) {
+  console.log(numero)
+}
+
+mostraNumeroDaCarol(contatos)
+
+
+// DESESTRUTURANDO ARRAYS - PARTE 2
+
+const rotas = {
+  rapidas: ['Rodovia', 'Estrada X', 'Estrada Y']
+}
+
+const {rapidas:[rapida]} = rotas
+console.log(rapida)
