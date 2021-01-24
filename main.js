@@ -2650,3 +2650,132 @@ const rotas = {
 
 const {rapidas:[rapida]} = rotas
 console.log(rapida)
+
+
+// MODELANDO COM CLASSES
+
+function Carro(modelo, chassi, qtdPortas) {
+  this.modelo = modelo
+  this.chassi = chassi
+  this.qtdPortas = qtdPortas
+}
+
+const prototipo = new Carro('protótipo', '1290381209', 2)
+console.log(prototipo.modelo)
+console.log(prototipo.chassi)
+console.log(prototipo.qtdPortas)
+
+Carro.prototype.andar = function() {
+  console.log('vrum vrum')
+}
+
+const sonix = new Carro('Sonix', '9120219', 4)
+console.log(sonix.modelo)
+sonix.andar()
+
+function Sonix(modelo, chassi, qtdPortas) {
+  Carro.call(this, modelo, chassi, qtdPortas)
+}
+
+Sonix.prototype = Object.create(Carro.prototype)
+Sonix.prototype.constructor = Sonix
+
+const sonixII = new Sonix('Sonix', '9120219', 4)
+console.log(sonixII.modelo)
+sonixII.andar()
+
+Sonix.prototype.abrirTetoSolar = function() {
+  console.log('abrindo teto solar')
+}
+
+const sonixIII = new Sonix('Sonix', '9120219', 4)
+sonixIII.abrirTetoSolar()
+
+
+// UTILIZE CLASSES DO ES6
+
+class Carrao {
+  constructor(modelo, chassi, qtdPortas) {
+    this.modelo = modelo
+    this.chassi = chassi
+    this.qtdPortas = qtdPortas
+  }
+
+  andar() {
+    console.log('vrum vrum')
+  }
+}
+
+const basico = new Carrao('Básico', '123123', 2)
+
+console.log(basico.modelo)
+console.log(basico.chassi)
+console.log(basico.qtdPortas)
+basico.andar()
+
+
+// ESTENDENDO CLASSES
+
+class SonixU {
+  abrirTetoSolar() {
+    console.log('abrindo teto solar')
+  }
+}
+
+class SonixII extends Carrao {
+  abrirTetoSolar() {
+    console.log('abrindo teto solar')
+  }
+}
+
+const Carretao = new SonixU()
+Carretao.abrirTetoSolar()
+
+class SonixR extends Carrao {
+  constructor(modelo, chassi, qtdPortas) {
+    super(modelo, chassi, qtdPortas)
+  }
+
+  abrirTetoSolar() {
+    console.log('abrindo teto solar')
+  }
+}
+
+const meuSonix = new Sonix('Sonix', '9120219', 4)
+meuSonix.abrirTetoSolar()
+meuSonix.andar()
+console.log(meuSonix.modelo)
+
+
+// HOISTING EM CLASSES
+
+const carro = new Carro('sonix')
+console.log(carro.modelo)
+
+function Carro(modelo) {
+  this.modelo = modelo
+}
+
+const carro = new Carro('sonix')
+class Carro {
+  constructor(modelo) {
+    this.modelo = modelo
+  }
+}
+
+
+//  DECLARAÇÃO POR MEIO DE EXŔESSÕES
+
+const Classe = class {
+
+}
+
+const instancia = new Classe()
+
+const ClasseI = class Nome {
+  getClassName() {
+    return Nome.name
+  }
+}
+
+const instanciaI = new Nome()
