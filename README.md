@@ -65,4 +65,12 @@ Se você está aprendendo JavaScript ou pelo menos já tem noção desta linguag
   - Importar e exportar módulos
   - Exportando classes
 - Funções geradoras
-  - 
+  - Iterações com geradores
+  - Entendendo o Symbol.iterator
+  - Delegação de funções geradoras
+- Operações Assíncronas com Promises
+  - O esquele de uma promise
+  - Operções assíncronas
+  - Aninhamento de then e catch
+  - Como lidar com erros inesperados
+- Metaprogramação com proxies
